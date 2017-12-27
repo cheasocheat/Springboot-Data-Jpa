@@ -1,7 +1,7 @@
 package com.glf.mobile.mobilews.controller;
 
-import com.glf.mobile.mobilews.util.pathapi.BasePath;
-import com.glf.mobile.mobilews.util.pathapi.Path;
+import com.glf.mobile.mobilews.util.inapi.BasePath;
+import com.glf.mobile.mobilews.util.inapi.Path;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

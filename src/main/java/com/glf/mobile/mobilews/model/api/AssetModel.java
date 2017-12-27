@@ -1,10 +1,13 @@
-package com.glf.mobile.mobilews.model.entity;
+package com.glf.mobile.mobilews.model.api;
 
-import com.glf.mobile.mobilews.model.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Document{
+public class AssetModel {
+    @JsonProperty("ID")
     private Long id;
+    @JsonProperty("DESC")
     private String desc;
+    @JsonProperty("DESC_EN")
     private String descEn;
 
     public Long getId() {

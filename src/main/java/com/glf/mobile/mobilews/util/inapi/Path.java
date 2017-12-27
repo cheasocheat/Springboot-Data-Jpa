@@ -1,4 +1,4 @@
-package com.glf.mobile.mobilews.util.pathapi;
+package com.glf.mobile.mobilews.util.inapi;
 
 public class Path{
     public static final String GET_DEFAULT = "/";
