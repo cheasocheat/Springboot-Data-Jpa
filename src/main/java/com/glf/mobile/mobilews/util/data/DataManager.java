@@ -59,7 +59,7 @@ public class DataManager {
         HttpEntity<String> requestEntity = new HttpEntity<>(header);
         baseURL = loader.getEnvironment().getProperty("efinance.ws.url") + apikey;
         ResponseEntity<Map> responseEntity = restTemplate.exchange(baseURL, HttpMethod.POST, requestEntity, Map.class);
-        if (responseEntity == null) {
+        if (responseEntity != null) {
             if (responseEntity.getStatusCode() == HttpStatus.OK) {
                 return responseEntity.getBody();
             }
