@@ -4,11 +4,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.glf.mobile</groupId>
-	<artifactId>mobile-ws</artifactId>
+	<artifactId>mobile-webservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>mobile-ws</name>
+	<name>mobile-webservice</name>
 	<description>Mobile Web Service</description>
 
 	<parent>

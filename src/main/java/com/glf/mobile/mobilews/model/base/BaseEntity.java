@@ -1,15 +1,33 @@
 package com.glf.mobile.mobilews.model.base;
 
+import com.glf.mobile.mobilews.util.RecordStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import java.util.Date;
 
-public class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public abstract class BaseEntity {
+    protected Long id = null;
+
+    public BaseEntity(){
+
+    }
+
+    @Column(name = "rec_status")
+    private RecordStatus status;
+
+    @Column(name = "rec_index")
+    private Integer index;
+
+    @Column(name = "usr_created", nullable = false, length = 30)
+    private String createdUser;
+
+    @Column(name = "usr_updated", nullable = false, length = 30)
+    private String updatedUser;
 
     @Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -21,12 +39,43 @@ public class BaseEntity {
     @LastModifiedDate
     private Date updatedAt;
 
-    public Long getId() {
-        return id;
-    }
+    @Transient
+    public abstract Long getId();
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public RecordStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(RecordStatus status) {
+        this.status = status;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    public String getCreatedUser() {
+        return createdUser;
+    }
+
+    public void setCreatedUser(String createdUser) {
+        this.createdUser = createdUser;
+    }
+
+    public String getUpdatedUser() {
+        return updatedUser;
+    }
+
+    public void setUpdatedUser(String updatedUser) {
+        this.updatedUser = updatedUser;
     }
 
     public Date getCreatedAt() {
@@ -45,3 +94,4 @@ public class BaseEntity {
         this.updatedAt = updatedAt;
     }
 }
+
