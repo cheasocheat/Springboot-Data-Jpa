@@ -2,9 +2,11 @@ package com.glf.mobile.mobilews.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.glf.mobile.mobilews.model.base.BaseEntity;
+import com.glf.mobile.mobilews.util.RecordStatus;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Developer : cheasocheat
@@ -15,6 +17,11 @@ import javax.persistence.*;
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(value = {"createdAt", "updatedAt"}, allowGetters = true)
 public class Content extends BaseEntity {
+    private String title;
+    private String titleEn;
+    private String description;
+    private String descriptionEn;
+
 
     @Override
     @Id
@@ -24,19 +31,7 @@ public class Content extends BaseEntity {
         return id;
     }
 
-    @Column(name = "con_title", nullable = false)
-    private String title;
-
-    @Column(name = "con_title_en")
-    private String titleEn;
-
-    @Column(name = "con_desc", nullable = false)
-    private String conDesc;
-
-    @Column(name = "con_desc_en")
-    private String conDescEn;
-
-
+    @Column(name = "con_title")
     public String getTitle() {
         return title;
     }
@@ -45,6 +40,7 @@ public class Content extends BaseEntity {
         this.title = title;
     }
 
+    @Column(name = "con_title_en")
     public String getTitleEn() {
         return titleEn;
     }
@@ -53,19 +49,21 @@ public class Content extends BaseEntity {
         this.titleEn = titleEn;
     }
 
-    public String getConDesc() {
-        return conDesc;
+    @Column(name = "con_desc")
+    public String getDescription() {
+        return description;
     }
 
-    public void setConDesc(String conDesc) {
-        this.conDesc = conDesc;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getConDescEn() {
-        return conDescEn;
+    @Column(name = "con_desc_en")
+    public String getDescriptionEn() {
+        return descriptionEn;
     }
 
-    public void setConDescEn(String conDescEn) {
-        this.conDescEn = conDescEn;
+    public void setDescriptionEn(String descriptionEn) {
+        this.descriptionEn = descriptionEn;
     }
 }

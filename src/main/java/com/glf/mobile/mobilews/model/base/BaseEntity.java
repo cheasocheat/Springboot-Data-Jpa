@@ -4,40 +4,22 @@ import com.glf.mobile.mobilews.util.RecordStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Column;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
+import javax.persistence.*;
 import java.util.Date;
 
+@MappedSuperclass
 public abstract class BaseEntity {
     protected Long id = null;
+    private RecordStatus status;
+    private Integer index;
+    private String createdUser;
+    private String updatedUser;
+    private Date createdAt;
+    private Date updatedAt;
 
-    public BaseEntity(){
+    public BaseEntity() {
 
     }
-
-    @Column(name = "rec_status")
-    private RecordStatus status;
-
-    @Column(name = "rec_index")
-    private Integer index;
-
-    @Column(name = "usr_created", nullable = false, length = 30)
-    private String createdUser;
-
-    @Column(name = "usr_updated", nullable = false, length = 30)
-    private String updatedUser;
-
-    @Column(nullable = false, updatable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @CreatedDate
-    private Date createdAt;
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate
-    private Date updatedAt;
 
     @Transient
     public abstract Long getId();
@@ -46,6 +28,7 @@ public abstract class BaseEntity {
         this.id = id;
     }
 
+    @Column(name = "rec_status")
     public RecordStatus getStatus() {
         return status;
     }
@@ -54,6 +37,7 @@ public abstract class BaseEntity {
         this.status = status;
     }
 
+    @Column(name = "rec_index")
     public Integer getIndex() {
         return index;
     }
@@ -62,6 +46,7 @@ public abstract class BaseEntity {
         this.index = index;
     }
 
+    @Column(name = "usr_created", nullable = false, length = 30)
     public String getCreatedUser() {
         return createdUser;
     }
@@ -70,6 +55,7 @@ public abstract class BaseEntity {
         this.createdUser = createdUser;
     }
 
+    @Column(name = "usr_updated", nullable = false, length = 30)
     public String getUpdatedUser() {
         return updatedUser;
     }
@@ -78,6 +64,9 @@ public abstract class BaseEntity {
         this.updatedUser = updatedUser;
     }
 
+    @Column(nullable = false, updatable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -86,6 +75,10 @@ public abstract class BaseEntity {
         this.createdAt = createdAt;
     }
 
+
+    @Column(nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    @LastModifiedDate
     public Date getUpdatedAt() {
         return updatedAt;
     }
